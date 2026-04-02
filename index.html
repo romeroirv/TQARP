@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Código secreto</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f2f2f2;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    .caja {
+      background: white;
+      padding: 25px;
+      border-radius: 15px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+      width: 100%;
+      max-width: 360px;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 22px;
+      margin-bottom: 10px;
+    }
+
+    .subtexto {
+      margin-top: 0;
+      margin-bottom: 15px;
+      font-size: 14px;
+      color: #555;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px;
+      font-size: 18px;
+      text-align: center;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      margin-bottom: 12px;
+      box-sizing: border-box;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      font-size: 18px;
+      border: none;
+      border-radius: 10px;
+      background: #007bff;
+      color: white;
+      cursor: pointer;
+    }
+
+    #resultado {
+      margin-top: 15px;
+      font-size: 18px;
+      font-weight: bold;
+      min-height: 30px;
+    }
+
+    .ok { color: green; }
+    .error { color: red; }
+  </style>
+</head>
+<body>
+
+  <div class="caja">
+    <h1>⭐ JUEGO DE SEMANA SANTA ⭐</h1>
+    <p class="subtexto">CUATRO CIFRAS... TODO TIENE QUE VER CON NOSOTROS</p>
+
+    <input id="codigo" type="password" inputmode="numeric" maxlength="4" placeholder="****">
+
+    <button id="boton">ACCEDER</button>
+
+    <div id="resultado"></div>
+  </div>
+
+  <script>
+    const datosPorDia = {
+      "2026-04-02": {
+        codigo: "0807",
+        enlace: "https://drive.google.com/file/d/1Ho3OkSglpIkwsV4u6-iCZLCmdrGQrFIY/view?usp=sharing"
+      },
+      "2026-04-03": {
+        codigo: "2702",
+        enlace: "https://open.spotify.com/intl-es/track/1gJA27xiMdENwoAVN7kMlo"
+      },
+      "2026-04-04": {
+        codigo: "2208",
+        enlace: "https://www.rosify.org/rose/omb74tospg"
+      }
+    };
+
+    const boton = document.getElementById("boton");
+    const codigo = document.getElementById("codigo");
+    const resultado = document.getElementById("resultado");
+
+    function obtenerFechaLocal() {
+      const hoy = new Date();
+      const year = hoy.getFullYear();
+      const month = String(hoy.getMonth() + 1).padStart(2, "0");
+      const day = String(hoy.getDate()).padStart(2, "0");
+      return `${year}-${month}-${day}`;
+    }
+
+    function comprobar() {
+      const fechaHoy = obtenerFechaLocal();
+      const datosHoy = datosPorDia[fechaHoy];
+
+      if (!datosHoy) {
+        resultado.textContent = "Hoy no disponible";
+        resultado.className = "error";
+        return;
+      }
+
+      if (codigo.value.trim() === datosHoy.codigo) {
+        resultado.textContent = "ACCESO COMPLETADO. TQARP ❤️";
+        resultado.className = "ok";
+
+        setTimeout(() => {
+          window.location.href = datosHoy.enlace;
+        }, 1200);
+
+      } else {
+        resultado.textContent = "Piensa más peque... sigue intentándolo 😢";
+        resultado.className = "error";
+      }
+    }
+
+    boton.addEventListener("click", comprobar);
+
+    codigo.addEventListener("keydown", function(e) {
+      if (e.key === "Enter") {
+        comprobar();
+      }
+    });
+  </script>
+
+</body>
+</html>
