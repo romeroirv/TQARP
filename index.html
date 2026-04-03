@@ -38,6 +38,13 @@
       color: #555;
     }
 
+    .urgente {
+      font-size: 14px;
+      color: red;
+      margin-bottom: 10px;
+      font-weight: bold;
+    }
+
     input {
       width: 100%;
       padding: 12px;
@@ -77,6 +84,9 @@
     <h1>⭐JUEGO DE SEMANA SANTA⭐</h1>
     <p class="subtexto">CUATRO CIFRAS... TODO TIENE QUE VER CON NOSOTROS</p>
 
+    <!-- TEXTO SOLO PARA HOY -->
+    <p id="mensajeHoy" class="urgente"></p>
+
     <input id="codigo" type="password" inputmode="numeric" maxlength="4" placeholder="****">
 
     <button id="boton">PRUEBA PEQUE 🤭</button>
@@ -97,12 +107,17 @@
       "2026-04-04": {
         codigo: "2208",
         enlace: "https://www.rosify.org/rose/omb74tospg"
+      },
+      "2026-04-05": {
+        codigo: "0408",
+        enlace: "https://drive.google.com/file/d/1_YS-sw2uUI-Zyh2Y5WFCmCFQwnB4nA8Y/view?usp=sharing"
       }
     };
 
     const boton = document.getElementById("boton");
     const codigo = document.getElementById("codigo");
     const resultado = document.getElementById("resultado");
+    const mensajeHoy = document.getElementById("mensajeHoy");
 
     function obtenerFechaLocal() {
       const hoy = new Date();
@@ -112,8 +127,14 @@
       return `${year}-${month}-${day}`;
     }
 
+    const fechaHoy = obtenerFechaLocal();
+
+    // 🔥 MENSAJE SOLO HOY (DÍA 2)
+    if (fechaHoy === "2026-04-02") {
+      mensajeHoy.textContent = "TIC TAC, se te acaba el tiempo... 🤭";
+    }
+
     function comprobar() {
-      const fechaHoy = obtenerFechaLocal();
       const datosHoy = datosPorDia[fechaHoy];
 
       if (!datosHoy) {
@@ -131,7 +152,14 @@
         }, 1200);
 
       } else {
-        resultado.textContent = "Piensa más peque... sigue intentándolo 😢";
+
+        // 🔥 ERROR ESPECIAL SOLO HOY
+        if (fechaHoy === "2026-04-02") {
+          resultado.textContent = "ERROR! Queda poco tiempo... 🥲";
+        } else {
+          resultado.textContent = "Piensa más peque... sigue intentándolo 😢";
+        }
+
         resultado.className = "error";
       }
     }
