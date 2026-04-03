@@ -84,7 +84,6 @@
     <h1>⭐JUEGO DE SEMANA SANTA⭐</h1>
     <p class="subtexto">CUATRO CIFRAS... TODO TIENE QUE VER CON NOSOTROS</p>
 
-    <!-- TEXTO SOLO PARA HOY -->
     <p id="mensajeHoy" class="urgente"></p>
 
     <input id="codigo" type="password" inputmode="numeric" maxlength="4" placeholder="****">
@@ -129,8 +128,8 @@
 
     const fechaHoy = obtenerFechaLocal();
 
-    // 🔥 MENSAJE SOLO HOY (DÍA 2)
-    if (fechaHoy === "2026-04-02") {
+    // 🔥 MENSAJE SOLO HOY (DÍA 3)
+    if (fechaHoy === "2026-04-03") {
       mensajeHoy.textContent = "TIC TAC, se te acaba el tiempo... 🤭";
     }
 
@@ -153,8 +152,8 @@
 
       } else {
 
-        // 🔥 ERROR ESPECIAL SOLO HOY
-        if (fechaHoy === "2026-04-02") {
+        // 🔥 ERROR ESPECIAL SOLO HOY (DÍA 3)
+        if (fechaHoy === "2026-04-03") {
           resultado.textContent = "ERROR! Queda poco tiempo... 🥲";
         } else {
           resultado.textContent = "Piensa más peque... sigue intentándolo 😢";
