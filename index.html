@@ -108,8 +108,12 @@
         enlace: "https://www.rosify.org/rose/omb74tospg"
       },
       "2026-04-05": {
-        codigo: "0408",
+        codigo: "0611",
         enlace: "https://drive.google.com/file/d/1_YS-sw2uUI-Zyh2Y5WFCmCFQwnB4nA8Y/view?usp=sharing"
+      },
+      "2026-04-06": {
+        codigo: "1111",
+        enlace: "https://drive.google.com/file/d/1XqPeN7JEUCXVwa5PC7XST4_J7CX0DH-h/view?usp=sharing"
       }
     };
 
@@ -128,7 +132,7 @@
 
     const fechaHoy = obtenerFechaLocal();
 
-    // 🔥 MENSAJE SOLO HOY (DÍA 3)
+    // 🔥 MENSAJE SOLO DÍA 3
     if (fechaHoy === "2026-04-03") {
       mensajeHoy.textContent = "TIC TAC, se te acaba el tiempo... 🤭";
     }
@@ -152,7 +156,7 @@
 
       } else {
 
-        // 🔥 ERROR ESPECIAL SOLO HOY (DÍA 3)
+        // 🔥 ERROR ESPECIAL SOLO DÍA 3
         if (fechaHoy === "2026-04-03") {
           resultado.textContent = "ERROR! Queda poco tiempo... 🥲";
         } else {
